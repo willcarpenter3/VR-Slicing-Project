@@ -21,6 +21,13 @@ public class Slicer : MonoBehaviour
             
             foreach (Collider objectToBeSliced in objectsToBeSliced)
             {
+                //Check to see if item should be dropped
+                DropItem d = objectToBeSliced.gameObject.GetComponent<DropItem>();
+                if (d != null)
+                {
+                    d.Drop();
+                }
+
                 SlicedHull slicedObject = SliceObject(objectToBeSliced.gameObject, materialAfterSlice);
 
                 GameObject upperHullGameobject = slicedObject.CreateUpperHull(objectToBeSliced.gameObject, materialAfterSlice);
