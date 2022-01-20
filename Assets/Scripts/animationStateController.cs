@@ -16,9 +16,9 @@ public class animationStateController : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         navigator = GetComponent<Navigator>();
-        isWalkingHash = Animator.StringToHash("isWalking");
-        isRunningHash = Animator.StringToHash("isRunning");
-        isDeadHash = Animator.StringToHash("isDead");
+        //isWalkingHash = Animator.StringToHash("isWalking");
+        //isRunningHash = Animator.StringToHash("isRunning");
+        //isDeadHash = Animator.StringToHash("isDead");
     }
 
     // Update is called once per frame
@@ -27,8 +27,8 @@ public class animationStateController : MonoBehaviour
         velocity = navigator.getVelocity();
         //animator.SetFloat( ,velocity.x)
         //animator.SetFloat( , velocity.z)
-        bool isWalking = animator.GetBool(isWalkingHash);
-        bool isRunning = animator.GetBool(isRunningHash);
-        bool isDead = animator.GetBool(isDeadHash);
+        //bool isWalking = animator.GetBool(isWalkingHash);
+        //bool isRunning = animator.GetBool(isRunningHash);
+        //bool isDead = animator.GetBool(isDeadHash);
     }
 }

@@ -33,5 +33,7 @@ public class PlayerStats : MonoBehaviour
     void Update()
     {
         vignette.intensity.Override((maxHealth - health) / maxHealth);
+
+        health -= 0.01f;
     }
 }
