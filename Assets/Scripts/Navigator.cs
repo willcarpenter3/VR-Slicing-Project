@@ -7,18 +7,21 @@ public class Navigator : MonoBehaviour
 {
     NavMeshAgent agent;
     public Transform goal;
+    Animator animator;
 
     // Start is called before the first frame update
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        agent.destination = goal.position;
+        animator = GetComponent<Animator>();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        agent.destination = goal.position;
+        animator.SetFloat("Speed", agent.velocity.magnitude);
     }
 
     public Vector3 getVelocity() { return agent.velocity; }
