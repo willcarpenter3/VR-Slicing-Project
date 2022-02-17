@@ -21,6 +21,7 @@ public class Navigator : MonoBehaviour
     void Update()
     {
         agent.destination = goal.position;
+        Debug.Log("Follow Player: " + agent.velocity.magnitude);
         animator.SetFloat("Speed", agent.velocity.magnitude);
     }
 
