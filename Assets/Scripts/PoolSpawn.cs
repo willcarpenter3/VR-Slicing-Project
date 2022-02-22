@@ -15,9 +15,11 @@ public class PoolSpawn : MonoBehaviour
 
     public void spawn(Transform transform)
     {
+        Debug.Log("Calling pool spawn");
         if (pool == null)
         {
-            pool = Instantiate(spawnable, new Vector3(transform.position.x, poolYLocation, transform.position.z), transform.rotation);
+            Debug.Log("Going to Instantiate Pool");
+            pool = Instantiate(spawnable, new Vector3(transform.position.x, poolYLocation, transform.position.z), Quaternion.identity);
         }
         else
         {
@@ -25,4 +27,8 @@ public class PoolSpawn : MonoBehaviour
             pool.transform.localScale = new Vector3(currentScale.x + scaleIncrease, currentScale.y + scaleIncrease, currentScale.z + scaleIncrease);
         }
     }
+
+    //Getters and setters for pool
+
+    //Scale function
 }
