@@ -26,12 +26,24 @@ public class Slicer : MonoBehaviour
                 GameObject upperHullGameobject = slicedObject.CreateUpperHull(objectToBeSliced.gameObject, materialAfterSlice);
                 GameObject lowerHullGameobject = slicedObject.CreateLowerHull(objectToBeSliced.gameObject, materialAfterSlice);
 
-                if (objectToBeSliced.gameObject.CompareTag("PoolSpawner"))
+                //blood pool spawning code
+                if (objectToBeSliced.CompareTag("PoolSpawner"))
                 {
-                    objectToBeSliced.gameObject.GetComponent<PoolSpawn>().spawn(objectToBeSliced.transform);
                     //Give upper & lower Hull objects the PoolSpawn script (if it's a pool spawner)
-
-                    //Get pool from parent object and give it to children
+                    upperHullGameobject.AddComponent<PoolSpawn>();
+                    lowerHullGameobject.AddComponent<PoolSpawn>();
+                    GameObject p = objectToBeSliced.gameObject.GetComponent<PoolSpawn>().getPool();
+                    if (p != null) // if a pool already exists, increase scale of existing pool
+                    {
+                        objectToBeSliced.GetComponent<PoolSpawn>().scale();
+                    }
+                    else // otherwise, spawn a new pool
+                    {
+                        p = objectToBeSliced.GetComponent<PoolSpawn>().spawn(objectToBeSliced.transform);
+                    }
+                    // pass pool onto "children"
+                    upperHullGameobject.GetComponent<PoolSpawn>().setPool(p);
+                    lowerHullGameobject.GetComponent<PoolSpawn>().setPool(p);
                 }
 
 
