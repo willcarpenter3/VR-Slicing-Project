@@ -13,11 +13,14 @@ public class PlayerStats : MonoBehaviour
     public float maxPower = 100;
     private float power;
 
+    private float maxWeight = 0.666f;
+
     [Header("Volume Reference")]
     public Volume volume;
     private Vignette vignette;
 
-    private void Awake() {
+    private void Awake()
+    {
         if (volume.profile.TryGet(out Vignette vignette))
             this.vignette = vignette;
     }
@@ -29,11 +32,10 @@ public class PlayerStats : MonoBehaviour
         power = maxPower;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void damagePlayer(int amt)
     {
-        vignette.intensity.Override((maxHealth - health) / maxHealth);
-
-        health -= 0.01f;
+        health = Mathf.Max(0, health - amt);
+        Debug.Log("Health %: " + ((maxHealth - health) / maxHealth));
+        volume.weight = maxWeight * ((maxHealth - health) / maxHealth);
     }
 }
