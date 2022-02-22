@@ -22,7 +22,10 @@ public class Slicer : MonoBehaviour
             foreach (Collider objectToBeSliced in objectsToBeSliced)
             {
                 SlicedHull slicedObject = SliceObject(objectToBeSliced.gameObject, materialAfterSlice);
-
+                if (objectToBeSliced.gameObject.CompareTag("PoolSpawner"))
+                {
+                    objectToBeSliced.gameObject.GetComponent<PoolSpawn>().spawn(objectToBeSliced.transform);
+                }
                 GameObject upperHullGameobject = slicedObject.CreateUpperHull(objectToBeSliced.gameObject, materialAfterSlice);
                 GameObject lowerHullGameobject = slicedObject.CreateLowerHull(objectToBeSliced.gameObject, materialAfterSlice);
 
