@@ -799,7 +799,7 @@ MonoBehaviour:
   spawnable: {fileID: 3053632464683548275, guid: 5805cc01dc8ba4245bba67db562c2bb3,
     type: 3}
   poolYLocation: 0.02
-  scaleIncrease: 1
+  scaleIncrease: 10
 --- !u!1 &329945970 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 6ed30265bb42dc140bf9a155f0f161f4,

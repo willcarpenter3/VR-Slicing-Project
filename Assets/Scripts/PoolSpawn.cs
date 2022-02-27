@@ -39,6 +39,6 @@ public class PoolSpawn : MonoBehaviour
     public void scale()
     {
         Vector3 currentScale = pool.transform.localScale;
-        pool.transform.localScale = new Vector3(currentScale.x + scaleIncrease, currentScale.y + scaleIncrease, currentScale.z + scaleIncrease);
+        pool.transform.localScale = new Vector3(currentScale.x * scaleIncrease, currentScale.y * scaleIncrease, currentScale.z * scaleIncrease);
     }
 }
