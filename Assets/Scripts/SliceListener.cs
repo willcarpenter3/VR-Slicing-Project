@@ -19,7 +19,7 @@ public class SliceListener : MonoBehaviour
 
     public float minToCut = 4.0f;
 
-    public Vector3 velocity {get; private set;} = Vector3.zero;
+    public Vector3 velocity { get; private set; } = Vector3.zero;
 
     void Update()
     {
@@ -28,14 +28,14 @@ public class SliceListener : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Velocity Magnitude: " + velocity.magnitude);
-        Debug.Log("Velocity x: " + velocity.x + " y: " + velocity.y + " z: " + velocity.z );
+        //Debug.Log("Velocity Magnitude: " + velocity.magnitude);
+        //Debug.Log("Velocity x: " + velocity.x + " y: " + velocity.y + " z: " + velocity.z );
         if (velocity.magnitude >= minToCut)
         {
             slicer.isTouched = true;
             float finalIntensity = vibrationIntensity * (velocity.magnitude / 2);
             rightHand.SendHapticImpulse(finalIntensity, .3f);
         }
-        
+
     }
 }
