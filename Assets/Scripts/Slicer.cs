@@ -10,6 +10,10 @@ public class Slicer : MonoBehaviour
     public LayerMask sliceMask;
     public bool isTouched;
 
+    [SerializeField] float explosionForce = 1f;
+
+    [SerializeField] float decayTime = 5f;
+
     private void Update()
     {
         if (isTouched == true)
@@ -59,6 +63,12 @@ public class Slicer : MonoBehaviour
 
                 MakeItPhysical(upperHullGameobject);
                 MakeItPhysical(lowerHullGameobject);
+
+                upperHullGameobject.GetComponent<Rigidbody>().AddExplosionForce(explosionForce, transform.position, 1f);
+                lowerHullGameobject.GetComponent<Rigidbody>().AddExplosionForce(explosionForce, transform.position, 1f);
+
+                Destroy(upperHullGameobject, decayTime);
+                Destroy(lowerHullGameobject, decayTime);
 
                 Destroy(objectToBeSliced.gameObject);
             }
