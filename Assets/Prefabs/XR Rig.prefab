@@ -508,6 +508,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   powerUpTime: 10
   selectedType: 0
+  swapPowerUpReference: {fileID: 0}
+  applyPowerUpReference: {fileID: 0}
   giantSwordMeter: 0
   projectileSlashMeter: 0
   timeSlowMeter: 0
