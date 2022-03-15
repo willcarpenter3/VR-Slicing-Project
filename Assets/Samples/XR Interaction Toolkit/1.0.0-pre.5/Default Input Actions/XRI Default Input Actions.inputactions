@@ -965,6 +965,52 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "PowerUpInput",
+            "id": "14b1f1a7-4dd8-4b37-b1a8-578037244e54",
+            "actions": [
+                {
+                    "name": "SwapPowerUp",
+                    "type": "Button",
+                    "id": "9137ae6c-ddca-4cff-8d49-1439feb46bff",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "ApplyPowerUp",
+                    "type": "Button",
+                    "id": "4bff614f-b48c-4f92-8138-36c87571a327",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "75f5af10-2b0a-4d63-bf6d-419d15145572",
+                    "path": "<XRController>{LeftHand}/secondaryButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SwapPowerUp",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fd8efbdd-796c-41ba-af4c-56062f403d7d",
+                    "path": "<XRController>{RightHand}/triggerPressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ApplyPowerUp",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [
