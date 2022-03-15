@@ -426,6 +426,7 @@ GameObject:
   - component: {fileID: 8710573725197599625}
   - component: {fileID: 8710573725197599626}
   - component: {fileID: 8710573725197599627}
+  - component: {fileID: 2197343660035559346}
   m_Layer: 0
   m_Name: Body
   m_TagString: Player
@@ -493,6 +494,25 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0.07, z: 0}
+--- !u!114 &2197343660035559346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8710573725197599637}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21320b9d185d6824894ae127980aaec9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  powerUpTime: 10
+  selectedType: 0
+  giantSwordMeter: 0
+  projectileSlashMeter: 0
+  timeSlowMeter: 0
+  swordTransform: {fileID: 8710573727057590777}
+  slicerTransform: {fileID: 8710573725633483297}
 --- !u!1 &8710573725308558047
 GameObject:
   m_ObjectHideFlags: 0
@@ -753,6 +773,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   isTouched: 0
+  explosionForce: 1
+  decayTime: 5
 --- !u!1 &8710573725820341039
 GameObject:
   m_ObjectHideFlags: 0
@@ -2339,7 +2361,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 164552b121edd68468a687cdc3aa84f2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2402,7 +2424,9 @@ MonoBehaviour:
       type: 3}
   rightHand: {fileID: 8710573727019839688}
   vibrationIntensity: 0.2
-  minToCut: 4
+  minToCut: 2
+  sliceCooldown: 0.25
+  canCut: 1
 --- !u!54 &8710573727057590776
 Rigidbody:
   m_ObjectHideFlags: 0
