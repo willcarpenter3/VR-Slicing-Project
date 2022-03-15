@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class PowerUp : MonoBehaviour
 {
@@ -25,6 +26,10 @@ public class PowerUp : MonoBehaviour
     [Header("Giant Slash Information")]
     [SerializeField] private Transform swordTransform;
     [SerializeField] private Transform slicerTransform;
+
+    [Header("Time Slow Information")]
+    [SerializeField] private float timeSlowFactor = 0.5f;
+    [SerializeField] private SnapTurnProviderBase snapTurnProvider;
 
     void Awake()
     {
@@ -67,10 +72,9 @@ public class PowerUp : MonoBehaviour
                 StartCoroutine("GiantSlash");
                 break;
             case EPowerUpType.ProjectileSlash:
-                //projectileSlashMeter += val;
                 break;
             case EPowerUpType.TimeSlow:
-                //timeSlowMeter += val;
+                StartCoroutine("TimeSlow");
                 break;
         }
     }
@@ -116,14 +120,34 @@ public class PowerUp : MonoBehaviour
 
 
         //Powerup duration
-        yield return new WaitForSeconds(powerUpTime);
+        yield return new WaitForSecondsRealtime(powerUpTime);
 
         //Reset values
         swordTransform.localScale = swordScale;
         slicerTransform.localScale = slicerScale;
         swordTransform.localPosition = swordPos;
         slicerTransform.localPosition = slicerPos;
+    }
 
+    private IEnumerator TimeSlow()
+    {
+        //Get copy of original values
+        float originalFixedTimeScale = Time.fixedDeltaTime;
+        float originalTimeScale = Time.timeScale;
+        float originalSnapTurnScale = snapTurnProvider.debounceTime;
 
+        //Slow Time
+        Time.timeScale *= timeSlowFactor;
+        Time.fixedDeltaTime *= timeSlowFactor;
+        snapTurnProvider.debounceTime *= timeSlowFactor;
+        
+        
+        //Powerup duration
+        yield return new WaitForSecondsRealtime(powerUpTime);
+
+        //Reset value
+        Time.timeScale = originalTimeScale;
+        Time.fixedDeltaTime = originalFixedTimeScale;
+        snapTurnProvider.debounceTime = originalSnapTurnScale;
     }
 }

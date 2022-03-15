@@ -86,4 +86,9 @@ public class Slicer : MonoBehaviour
     {
         return obj.Slice(transform.position, transform.up, crossSectionMaterial);
     }
+
+    private void OnCollisionEnter(Collision c)
+    {
+        Physics.IgnoreCollision(c.collider, GetComponent<Collider>());
+    }
 }

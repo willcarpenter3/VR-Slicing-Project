@@ -515,6 +515,8 @@ MonoBehaviour:
   timeSlowMeter: 0
   swordTransform: {fileID: 8710573727057590777}
   slicerTransform: {fileID: 8710573725633483297}
+  timeSlowFactor: 0.5
+  snapTurnProvider: {fileID: 0}
 --- !u!1 &8710573725308558047
 GameObject:
   m_ObjectHideFlags: 0
