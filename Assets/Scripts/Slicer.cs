@@ -57,6 +57,12 @@ public class Slicer : MonoBehaviour
                     lowerHullGameobject.GetComponent<PoolSpawn>().setPool(p);
                 }
 
+                //Add statistics to game manager
+                if (objectToBeSliced.CompareTag("Enemy"))
+                {
+                    GameManager.Instance.addKill();
+                }
+                GameManager.Instance.addSlice();
 
                 upperHullGameobject.transform.position = objectToBeSliced.transform.position;
                 lowerHullGameobject.transform.position = objectToBeSliced.transform.position;
@@ -71,6 +77,8 @@ public class Slicer : MonoBehaviour
                 Destroy(lowerHullGameobject, decayTime);
 
                 Destroy(objectToBeSliced.gameObject);
+
+                
             }
         }
     }
@@ -85,5 +93,10 @@ public class Slicer : MonoBehaviour
     private SlicedHull SliceObject(GameObject obj, Material crossSectionMaterial = null)
     {
         return obj.Slice(transform.position, transform.up, crossSectionMaterial);
+    }
+
+    private void OnCollisionEnter(Collision c)
+    {
+        Physics.IgnoreCollision(c.collider, GetComponent<Collider>());
     }
 }
