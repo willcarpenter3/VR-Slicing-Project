@@ -7,21 +7,21 @@ using UnityEngine.XR.Interaction.Toolkit;
 public class PowerUp : MonoBehaviour
 {
 
-    public enum EPowerUpType {GiantSword, ProjectileSlash, TimeSlow}
+    public enum EPowerUpType {GiantSword, TimeSlow, ProjectileSlash}
 
     [Header("General power-up information")]
+
+    [Tooltip("Time that this power-up should last")]
     [SerializeField] private float powerUpTime = 20f;
 
-    [SerializeField] private EPowerUpType selectedType;
+    [SerializeField] private EPowerUpType selectedType = EPowerUpType.GiantSword;
+
+    [SerializeField] private float meterFullValue = 10f;
 
     [Header("Input Information")]
     [SerializeField] private InputActionReference swapPowerUpReference;
     [SerializeField] private InputActionReference applyPowerUpReference;
-
-    [Header("Meters for powerup charging")]
-    [SerializeField] private float giantSwordMeter;
-    [SerializeField] private float projectileSlashMeter;
-    [SerializeField] private float timeSlowMeter;
+    
 
     [Header("Giant Slash Information")]
     [SerializeField] private Transform swordTransform;
@@ -30,6 +30,9 @@ public class PowerUp : MonoBehaviour
     [Header("Time Slow Information")]
     [SerializeField] private float timeSlowFactor = 0.5f;
     [SerializeField] private SnapTurnProviderBase snapTurnProvider;
+
+    [Header("Projectile Slash Information")]
+    [SerializeField] private ProjectileSlash projectileSlash;
 
     void Awake()
     {
@@ -65,41 +68,27 @@ public class PowerUp : MonoBehaviour
 
     void ApplyPowerUp(InputAction.CallbackContext context)
     {
-        Debug.Log("Applying Power Up");
-        switch (selectedType)
+        if(GameManager.Instance.powerUpMeters[selectedType] >= meterFullValue)
         {
-            case EPowerUpType.GiantSword:
-                StartCoroutine("GiantSlash");
-                break;
-            case EPowerUpType.ProjectileSlash:
-                break;
-            case EPowerUpType.TimeSlow:
-                StartCoroutine("TimeSlow");
-                break;
+            Debug.Log("Applying Power Up");
+            switch (selectedType)
+            {
+                case EPowerUpType.GiantSword:
+                    StartCoroutine("GiantSlash");
+                    break;
+                case EPowerUpType.ProjectileSlash:
+                    projectileSlash.FireProjectile();
+                    break;
+                case EPowerUpType.TimeSlow:
+                    StartCoroutine("TimeSlow");
+                    break;
+            }
+
+            GameManager.Instance.powerUpMeters[selectedType] = 0f;
         }
-    }
-
-
-    void Start()
-    {
-        //TODO remove - this is only for testing purposes
-        //ApplyPowerUp(EPowerUpType.GiantSword);
-    }
-
-
-    void AddToMeter(EPowerUpType type, float val)
-    {
-        switch(type)
+        else 
         {
-            case EPowerUpType.GiantSword:
-                giantSwordMeter += val;
-                break;
-            case EPowerUpType.ProjectileSlash:
-                projectileSlashMeter += val;
-                break;
-            case EPowerUpType.TimeSlow:
-                timeSlowMeter += val;
-                break;
+            Debug.Log("Meter not full!");
         }
     }
 
