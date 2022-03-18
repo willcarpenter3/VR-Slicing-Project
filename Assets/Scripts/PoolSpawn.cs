@@ -9,9 +9,10 @@ public class PoolSpawn : MonoBehaviour
 
     public GameObject spawnable;
 
-    public float poolYLocation;
+    public float poolYLocation = 0.01f;
 
-    public float scaleIncrease;
+    public float scaleIncrease = 5;
+
 
     public GameObject spawn(Transform transform)
     {
@@ -41,4 +42,6 @@ public class PoolSpawn : MonoBehaviour
         Vector3 currentScale = pool.transform.localScale;
         pool.transform.localScale = new Vector3(currentScale.x * scaleIncrease, currentScale.y * scaleIncrease, currentScale.z * scaleIncrease);
     }
+
+    
 }
