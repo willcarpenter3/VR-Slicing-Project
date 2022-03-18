@@ -12,7 +12,7 @@ public class DebugDisplay : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log("Time: " + Time.time);
+        //Debug.Log("Time: " + Time.time);
         //Debug.Log(gameObject.name);
     }
 
