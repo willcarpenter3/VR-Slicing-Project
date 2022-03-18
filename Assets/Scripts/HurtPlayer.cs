@@ -13,7 +13,7 @@ public class HurtPlayer : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            other.GetComponent<PlayerStats>().damagePlayer(25);
+            GameManager.Instance.damagePlayer(25);
         }
     }
 }
