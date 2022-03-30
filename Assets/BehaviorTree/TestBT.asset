@@ -1,5 +1,31 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8014792967846318275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ac79ca47d1f8e2449b12508da0a0162, type: 3}
+  m_Name: ChaseTarget
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 76503f489ead0a142bec3f345b69caea
+  position: {x: -323.8, y: 345.6}
+  blackboard:
+    moveToPosition: {x: 0, y: 0, z: 0}
+  description: Finds and Chases the Player
+  drawGizmos: 0
+  target: {fileID: 0}
+  speed: 15
+  stoppingDistance: 2
+  updateRotation: 1
+  acceleration: 40
+  tolerance: 10
 --- !u!114 &-6196516393655690955
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21,8 +47,32 @@ MonoBehaviour:
   description: 
   drawGizmos: 0
   children:
+  - {fileID: 2892892885609565810}
+  - {fileID: -8014792967846318275}
   - {fileID: -578807755041751610}
   - {fileID: 2094122699112646069}
+  - {fileID: 1186949131523522593}
+--- !u!114 &-3904425540662977429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3bd37eea1a41147aa438e27f4c80fb, type: 3}
+  m_Name: AttackTarget
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: ebdccd64214de674fbb273debda92b09
+  position: {x: 232.00012, y: 488.80002}
+  blackboard:
+    moveToPosition: {x: 0, y: 0, z: 0}
+  description: 
+  drawGizmos: 0
+  target: {fileID: 0}
 --- !u!114 &-578807755041751610
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64,8 +114,38 @@ MonoBehaviour:
   - {fileID: -6196516393655690955}
   - {fileID: -578807755041751610}
   - {fileID: 2094122699112646069}
+  - {fileID: -8014792967846318275}
+  - {fileID: 2892892885609565810}
+  - {fileID: 1186949131523522593}
+  - {fileID: -3904425540662977429}
+  - {fileID: 2258459819069829116}
+  - {fileID: 9002496868708321152}
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
+--- !u!114 &1186949131523522593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 460be9e34c566ea45b9e282b1adcb028, type: 3}
+  m_Name: Selector
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: b7fbf88aa16e5644bb88243f70891899
+  position: {x: 232.2764, y: 345.6}
+  blackboard:
+    moveToPosition: {x: 0, y: 0, z: 0}
+  description: 
+  drawGizmos: 0
+  children:
+  - {fileID: -3904425540662977429}
+  - {fileID: 2258459819069829116}
+  - {fileID: 9002496868708321152}
 --- !u!114 &2094122699112646069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -84,14 +164,57 @@ MonoBehaviour:
   position: {x: 4, y: 346}
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
-  description: Finds the Player
+  description: Finds and Follows the Player
   drawGizmos: 1
   target: {fileID: 0}
-  speed: 5
-  stoppingDistance: 0.1
+  speed: 6
+  stoppingDistance: 2
   updateRotation: 1
   acceleration: 40
   tolerance: 1
+  maxDistance: 20
+--- !u!114 &2258459819069829116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 771416be84772ca4693f3c97bd051f17, type: 3}
+  m_Name: StrafeTarget
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 47ffe77e2b87fc34a80f865ecb3676d9
+  position: {x: 462.09094, y: 488.80002}
+  blackboard:
+    moveToPosition: {x: 0, y: 0, z: 0}
+  description: 
+  drawGizmos: 0
+  target: {fileID: 0}
+--- !u!114 &2892892885609565810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df9e411f4095d0a44acd9a25323f5e73, type: 3}
+  m_Name: Log
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 0396dcaa9c4628645aec3807314787fc
+  position: {x: -506.64, y: 345.6}
+  blackboard:
+    moveToPosition: {x: 0, y: 0, z: 0}
+  description: Chase Player
+  drawGizmos: 0
+  message: Chase Player
 --- !u!114 &8293110599993762819
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113,6 +236,33 @@ MonoBehaviour:
   description: 
   drawGizmos: 0
   child: {fileID: 9164596879932466394}
+--- !u!114 &9002496868708321152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 493e6e933093ac7478b11b80533374c9, type: 3}
+  m_Name: AvoidTarget
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 18ff032c0afa56642a9d7abac8ae40c3
+  position: {x: 714.9638, y: 488.80008}
+  blackboard:
+    moveToPosition: {x: 0, y: 0, z: 0}
+  description: 
+  drawGizmos: 0
+  target: {fileID: 0}
+  speed: 5
+  stoppingDistance: 10
+  updateRotation: 1
+  acceleration: 40
+  tolerance: 1
+  minDistance: 10
 --- !u!114 &9164596879932466394
 MonoBehaviour:
   m_ObjectHideFlags: 0
