@@ -38,7 +38,7 @@ public class Slicer : MonoBehaviour
                 GameObject lowerHullGameobject = slicedObject.CreateLowerHull(objectToBeSliced.gameObject, materialAfterSlice);
 
                 //blood pool spawning code
-                if (objectToBeSliced.CompareTag("PoolSpawner"))
+                if (objectToBeSliced.CompareTag("PoolSpawner") || objectToBeSliced.CompareTag("Enemy"))
                 {
                     //Give upper & lower Hull objects the PoolSpawn script (if it's a pool spawner)
                     upperHullGameobject.AddComponent<PoolSpawn>();

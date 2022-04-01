@@ -8,21 +8,10 @@ public class BloodPoolScript : MonoBehaviour
 
     private bool isAbsorbing = false;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("Trigger Enter");
-        if (other.CompareTag("Sword"))
+        if (other.CompareTag("Sword") && !isAbsorbing)
         {
             isAbsorbing = true;
             float x = transform.localScale.x / timeToAbsorb;
@@ -34,7 +23,7 @@ public class BloodPoolScript : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Sword"))
+        if (other.CompareTag("Sword") && isAbsorbing)
         {
             Debug.Log("Trigger Exit");
             isAbsorbing = false;

@@ -84,7 +84,7 @@ public class PowerUp : MonoBehaviour
                     break;
             }
 
-            GameManager.Instance.powerUpMeters[selectedType] = 0f;
+            GameManager.Instance.powerUpMeters[selectedType] -= 10f;
         }
         else 
         {
